@@ -1,0 +1,159 @@
+<html lang="tr"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neumorphism Form &amp; Hizalanmış Buton (Düzeltildi)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Lato:700');
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: url(https://s.cdpn.io/1715/dark_stripes.png);
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Ana Form Çerçevesi */
+  .form-wrapper { 
+    position: relative;
+    width: 350px; 
+    height: auto; 
+    padding: 30px; 
+    background: #ccd0d4;
+    border-radius: 8px;
+    box-shadow: inset 0 0 35px 5px rgba(0,0,0,0.25), 
+                inset 0 2px 1px 1px rgba(255,255,255,0.9), 
+                inset 0 -2px 1px 0 rgba(0,0,0,0.25);
+  }
+
+  /* Input Stili */
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background: #ccd0d4;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2), 
+                inset -2px -2px 5px rgba(255,255,255,0.7);
+    box-sizing: border-box;
+  }
+  
+  /* Input Focus (Odak) Stili - Siyah çizgiyi kaldırır */
+  .form-input:focus {
+    outline: none; 
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.3), 
+                inset -1px -1px 3px rgba(255,255,255,0.8);
+  }
+
+  /* Butonun Çerçevesi: '.submit-toggle' */
+  .submit-toggle {
+    position: relative;
+    width: 150px; 
+    height: 45px; 
+    margin: 20px auto 0;
+    background: #ccd0d4;
+    border-radius: 8px;
+    box-shadow: inset 0 0 35px 5px rgba(0,0,0,0.25), 
+                inset 0 2px 1px 1px rgba(255,255,255,0.9), 
+                inset 0 -2px 1px 0 rgba(0,0,0,0.25);
+    cursor: pointer;
+  }
+
+  /* Butonun Kabartmalı Kısmı: '.submit-button-core' */
+  .submit-button-core {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 140px; 
+    height: 35px; 
+    margin-left: -70px;
+    margin-top: -17.5px;
+    background: #ccd0d4;
+    border-radius: 5px; 
+    filter: blur(1px);
+    box-shadow: 0 5px 10px -2px rgba(0,0,0,0.5),
+                inset 0 -3px 4px -1px rgba(0,0,0,0.2),
+                0 -5px 10px -1px rgba(255,255,255,0.6),
+                inset 0 3px 4px -1px rgba(255,255,255,0.2),
+                inset 0 0 5px 1px rgba(255,255,255,0.8),
+                inset 0 10px 15px 0 rgba(255,255,255,0.2);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* Buton Metni: '.submit-label' */
+  .submit-label {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 45px; 
+    text-align: center;
+    font-size: 18px; 
+    font-weight: 700;
+    color: rgba(0,0,0,0.4);
+    text-shadow: 1px 1px 3px #ccd0d4, 1px 1px 4px #fff;
+    transition: color 0.3s ease-out, font-size 0.3s ease-out;
+  }
+
+  /* 🔑 KESİN DÜZELTME: Görünmez Checkbox Input Hizalaması */
+  .submit-toggle input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
+    /* Düzeltmeler */
+    top: 0; 
+    left: 0; 
+    margin: 0; 
+    padding: 0; 
+  }
+  
+  /* Tıklanma Sırasındaki Animasyon (Squishy/Sıkışma Etkisi) */
+  .submit-toggle input:active ~ .submit-button-core {
+    box-shadow: 0 5px 10px -2px rgba(0,0,0,0.4),
+                inset 0 -8px 30px 1px rgba(255,255,255,0.9),
+                0 -5px 10px -1px rgba(255,255,255,0.6),
+                inset 0 8px 25px 0 rgba(0,0,0,0.4),
+                inset 0 0 10px 1px rgba(255,255,255,0.6);
+  }
+
+  .submit-toggle input:active ~ .submit-label {
+    font-size: 17px; 
+    color: rgba(0,0,0,0.45);
+  }
+  
+  /* Checkbox işaretlendiğindeki Animasyon (Basılı Kalma Etkisi) */
+  .submit-toggle input:checked ~ .submit-button-core {
+    box-shadow: 0 5px 10px -2px rgba(0,0,0,0.4),
+                inset 0 -8px 25px -1px rgba(255,255,255,0.9),
+                0 -5px 10px -1px rgba(255,255,255,0.6),
+                inset 0 8px 20px 0 rgba(0,0,0,0.2),
+                inset 0 0 5px 1px rgba(255,255,255,0.6);
+  }
+
+  .submit-toggle input:checked ~ .submit-label {
+    font-size: 17px; 
+    color: rgba(0,0,0,0.4);
+  }
+
+</style>
+</head>
+<body>
+  <div class="form-wrapper">
+    <form>
+      <input type="text" placeholder="Kullanıcı Adı" class="form-input">
+      <input type="password" placeholder="Şifre" class="form-input">
+      
+      <div class="submit-toggle">
+        <input type="checkbox">
+        <div class="submit-button-core"></div>
+        <div class="submit-label">GİRİŞ YAP</div>
+      </div>
+    </form>
+  </div>
+
+</body></html>

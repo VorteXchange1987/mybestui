@@ -1,0 +1,121 @@
+<html lang="tr"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neumorphism Toggle Switch (Final)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Lato:700');
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: url(https://s.cdpn.io/1715/dark_stripes.png);
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Ana Toggle Switch Konteyneri (Ray) */
+  .toggle {
+    position: relative;
+    width: 200px; 
+    height: 70px; 
+    background: #ccd0d4;
+    border-radius: 35px; 
+    box-shadow: inset 0 0 10px 2px rgba(0,0,0,0.25), 
+                inset 0 2px 1px 1px rgba(255,255,255,0.9), 
+                inset 0 -2px 1px 0 rgba(0,0,0,0.25);
+    cursor: pointer;
+  }
+
+  /* Anahtar Düğmesi (Thumb) */
+  .button {
+    position: absolute;
+    left: 5px; 
+    top: 5px;
+    width: 60px; 
+    height: 60px;
+    margin: 0; 
+    background: #ccd0d4;
+    border-radius: 50%; 
+    filter: blur(1px);
+    box-shadow: 0 5px 10px -2px rgba(0,0,0,0.5),
+                inset 0 -3px 4px -1px rgba(0,0,0,0.2),
+                0 -5px 10px -1px rgba(255,255,255,0.6),
+                inset 0 3px 4px -1px rgba(255,255,255,0.2),
+                inset 0 0 5px 1px rgba(255,255,255,0.8),
+                inset 0 10px 15px 0 rgba(255,255,255,0.2);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* *******************************************************
+     * GÖSTERGE NOKTASI (KOYU KIRMIZI/KOYU YEŞİL)         *
+     ******************************************************* */
+  .indicator {
+      width: 20px; 
+      height: 20px;
+      border-radius: 50%;
+      background: #ccd0d4; 
+      
+      /* Kapalı (KOYU KIRMIZIMSI) */
+      box-shadow: inset 2px 2px 5px rgba(100, 0, 0, 0.5), /* KOYU KIRMIZI */
+                  inset 2px 2px 5px rgba(0, 0, 0, 0.6); 
+      transition: all 0.3s ease-in-out; 
+  }
+  
+  /* Görünmez Checkbox (Hizalama düzeltmesi yapıldı) */
+  .toggle input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; 
+    left: 0; /* Sol hizalama düzeltmesi */
+    margin: 0; /* Margin sıfırlama düzeltmesi */
+    padding: 0; 
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10; 
+  }
+
+  /* Tıklanma Sırasındaki Animasyon */
+  .toggle input:active ~ .button {
+    box-shadow: 0 5px 10px -2px rgba(0,0,0,0.4),
+                inset 0 -8px 30px 1px rgba(255,255,255,0.9),
+                0 -5px 10px -1px rgba(255,255,255,0.6),
+                inset 0 8px 25px 0 rgba(0,0,0,0.4),
+                inset 0 0 10px 1px rgba(255,255,255,0.6);
+  }
+
+  /* AÇIK Konum: Checkbox işaretlendiğinde */
+  .toggle input:checked ~ .button {
+    transform: translateX(130px); 
+    left: 5px;
+    top: 5px;
+    box-shadow: 0 5px 10px -2px rgba(0,0,0,0.4),
+                inset 0 -8px 25px -1px rgba(255,255,255,0.9),
+                0 -5px 10px -1px rgba(255,255,255,0.6),
+                inset 0 8px 20px 0 rgba(0,0,0,0.2),
+                inset 0 0 5px 1px rgba(255,255,255,0.6);
+  }
+  
+  /* GÖSTERGE RENGİ: AÇIK durumdayken KOYU YEŞİL */
+  .toggle input:checked ~ .button .indicator {
+    box-shadow: inset 2px 2px 5px rgba(0, 100, 0, 0.5), /* KOYU YEŞİL */
+                inset 2px 2px 5px rgba(0, 0, 0, 0.6);
+  }
+
+</style>
+</head>
+<body>
+  <div class="toggle">
+    <input type="checkbox">
+    <div class="button">
+      <div class="indicator"></div>
+    </div>
+  </div>
+
+</body></html>

@@ -1,0 +1,132 @@
+<html lang="tr"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neumorphism Checkboxes (Koyu Yeşil Onay)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Lato:700');
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: url(https://s.cdpn.io/1715/dark_stripes.png);
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Ana Checkbox Konteyneri (İçe Çökük Yuva) */
+  .checkbox-container {
+    position: relative;
+    width: 250px;
+    margin: 10px 0;
+    padding: 10px;
+    background: #ccd0d4;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px 2px rgba(0,0,0,0.25), 
+                inset 0 2px 1px 1px rgba(255,255,255,0.9), 
+                inset 0 -2px 1px 0 rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  /* Görünmez Checkbox Input */
+  .checkbox-container input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    margin: 0;
+  }
+
+  /* Checkbox Görünümü (Dış Çerçeve) */
+  .checkbox-square {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    background: #ccd0d4;
+    border-radius: 6px;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2), 
+                inset -2px -2px 5px rgba(255,255,255,0.7);
+    flex-shrink: 0;
+  }
+
+  /* Onay İşareti (Başlangıçta Gizli) */
+  .checkmark {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+    margin-top: -10px;
+    opacity: 0;
+    background: #ccd0d4; /* Ana arka plan rengi */
+    border-radius: 4px; 
+    filter: blur(0.5px);
+    
+    /* Neumorfik dış gölge (varsayılan) */
+    box-shadow: 0 2px 5px -1px rgba(0,0,0,0.3),
+                inset 0 -2px 3px -1px rgba(0,0,0,0.1),
+                0 -2px 5px 0 rgba(255,255,255,0.4),
+                inset 0 2px 3px -1px rgba(255,255,255,0.2);
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Onay Metni */
+  .checkbox-label {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(0,0,0,0.4);
+    text-shadow: 1px 1px 3px #ccd0d4, 1px 1px 4px #fff;
+    user-select: none;
+    transition: color 0.3s;
+  }
+
+  /* *******************************************************
+     * DURUM DEĞİŞİKLİKLERİ (Tıklama ve Onaylanma)         *
+     ******************************************************* */
+  
+  /* Tıklama Efekti (Square'in daha da çökmesi) */
+  .checkbox-container input:active ~ .checkbox-square {
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.3), 
+                inset -1px -1px 3px rgba(255,255,255,0.8);
+  }
+
+  /* Onaylandığında (Checked) */
+  .checkbox-container input:checked ~ .checkbox-square .checkmark {
+    opacity: 1; 
+    /* KOYU YEŞİL iç vurgu ile Neumorfik gölge */
+    box-shadow: 0 2px 5px -1px rgba(0,0,0,0.3), /* Dış gölgeyi koru */
+                inset 0 0 5px 1px rgba(0, 100, 0, 0.7); /* KOYU YEŞİL İÇ GÖLGE */
+  }
+
+  /* Onaylandığında metin rengini değiştir */
+  .checkbox-container input:checked ~ .checkbox-label {
+      color: rgba(0,0,0,0.6);
+  }
+
+</style>
+</head>
+<body>
+  <div class="checkbox-container">
+    <input type="checkbox" id="secenek1">
+    <div class="checkbox-square">
+      <div class="checkmark"></div>
+    </div>
+    <label for="secenek1" class="checkbox-label">CheckBox</label>
+  </div>
+
+  
+
+  
+
+</body></html>

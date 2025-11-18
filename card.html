@@ -1,0 +1,74 @@
+<html lang="tr"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neumorphism Card</title>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Lato:700');
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: url(https://s.cdpn.io/1715/dark_stripes.png);
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  /* * Mevcut '.toggle' stilini temel alarak Card Container'ı oluşturuyoruz.
+  * Sadece boyutları (width, height) ve içerik hizalamasını değiştirdik.
+  */
+  .card-container {
+    position: relative;
+    width: 350px; /* Daha geniş bir kart boyutu */
+    height: 250px;
+    background: #ccd0d4;
+    border-radius: 16px; /* Daha yumuşak köşeler */
+    padding: 20px;
+    box-sizing: border-box;
+    /* Neumorfizm Dış Çerçeve Shadow'ları */
+    box-shadow: inset 0 0 35px 5px rgba(0,0,0,0.25), 
+                inset 0 2px 1px 1px rgba(255,255,255,0.9), 
+                inset 0 -2px 1px 0 rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  /* Buton stilini başlık için uyarladık, sadece boyut ve konum özelliklerini kaldırdık */
+  .card-title {
+    /* Başlık, dışa doğru Neumorfik bir kabartma efekti verebiliriz */
+    font-size: 24px;
+    font-weight: 700;
+    color: rgba(0,0,0,0.7);
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.8), -1px -1px 2px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    /* Hafif bir alt çizgi efekti */
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  /* Label stilini metin içeriği için uyarladık */
+  .card-content {
+    font-size: 14px;
+    font-weight: 400; /* Normal ağırlık */
+    color: rgba(0,0,0,0.5);
+    line-height: 1.5;
+    text-shadow: 1px 1px 3px #ccd0d4, 1px 1px 4px #fff;
+  }
+
+ 
+
+</style>
+</head>
+<body>
+  <div class="card-container">
+    <div class="card-title">Neumorfizm Kart Başlığı</div>
+    <div class="card-content">
+      Bu kart, daha önce kullanılan Neumorfik stilin (toggle/düğme) temel alınarak oluşturulmuş bir içerik kutusudur. Hafif iç gölge, karta bir **içerik yuvası** görünümü verir.
+    </div>
+    
+  </div>
+
+</body></html>
