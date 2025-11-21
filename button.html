@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neumorphism Squishy Button</title>
+<title>Small Text Neumorphic Button</title>
 <style>
   @import url('https://fonts.googleapis.com/css?family=Lato:700');
 
@@ -15,94 +15,121 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
   }
 
-  .toggle {
+  /* --- BUTON ÇERÇEVESİ --- */
+  .submit-toggle {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 150px; 
+    height: 45px; 
+    margin: 0 auto;
     background: #ccd0d4;
     border-radius: 8px;
     box-shadow: inset 0 0 35px 5px rgba(0,0,0,0.25), 
                 inset 0 2px 1px 1px rgba(255,255,255,0.9), 
                 inset 0 -2px 1px 0 rgba(0,0,0,0.25);
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent; 
   }
 
-  .button {
+  /* --- HAREKETLİ İÇ KISIM --- */
+  .submit-button-core {
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 137px; /* $size * 0.688 */
-    height: 137px;
-    margin-left: -68.5px;
-    margin-top: -68.5px;
+    width: 140px; 
+    height: 35px; 
+    margin-left: -70px;
+    margin-top: -17.5px;
     background: #ccd0d4;
-    border-radius: 94px;
+    border-radius: 5px; 
     filter: blur(1px);
-    box-shadow: 0 15px 25px -4px rgba(0,0,0,0.5),
+    
+    /* Normal gölge efekti */
+    box-shadow: 0 5px 10px -2px rgba(0,0,0,0.5),
                 inset 0 -3px 4px -1px rgba(0,0,0,0.2),
-                0 -10px 15px -1px rgba(255,255,255,0.6),
+                0 -5px 10px -1px rgba(255,255,255,0.6),
                 inset 0 3px 4px -1px rgba(255,255,255,0.2),
                 inset 0 0 5px 1px rgba(255,255,255,0.8),
-                inset 0 20px 30px 0 rgba(255,255,255,0.2);
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+                inset 0 10px 15px 0 rgba(255,255,255,0.2);
+
+    /* Yavaş geçiş efekti */
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .label {
+  /* --- METİN AYARLARI (KÜÇÜLTÜLDÜ) --- */
+  .submit-label {
     position: absolute;
     width: 100%;
     height: 100%;
-    line-height: 199px; /* toggle height -1 */
+    line-height: 45px; 
     text-align: center;
-    font-size: 42px;
     font-weight: 700;
-    color: rgba(0,0,0,0.4);
-    text-shadow: 1px 1px 3px #ccd0d4, 1px 1px 4px #fff;
-    transition: color 0.3s ease-out, font-size 0.3s ease-out;
+    
+    /* Görseldeki renk ve gölge stili */
+    color: rgba(0, 0, 0, 0.4);
+    text-shadow: 
+        1px 1px 3px #ccd0d4, 
+        0 0 0 rgba(0, 0, 0, 0.8), 
+        1px 1px 4px #fff;
+    
+    /* DEĞİŞİKLİK BURADA: Font 16px yapıldı */
+    font-size: 16px; 
+    opacity: 0.9;
+    
+    pointer-events: none;
+    transition: color 0.4s ease-out, font-size 0.4s ease-out;
   }
 
-  .toggle input {
+  /* --- INPUT (GİZLİ) --- */
+  .submit-toggle input {
     position: absolute;
     width: 100%;
     height: 100%;
     opacity: 0;
     cursor: pointer;
-    z-index: 1;
+    z-index: 10;
+    top: 0; left: 0; margin: 0;
   }
-
-  .toggle input:active ~ .button {
-    box-shadow: 0 15px 25px -4px rgba(0,0,0,0.4),
+  
+  /* --- TIKLAMA ANİMASYONU (İÇE ÇÖKME) --- */
+  .submit-toggle input:active ~ .submit-button-core {
+    box-shadow: 0 5px 10px -2px rgba(0,0,0,0.4),
                 inset 0 -8px 30px 1px rgba(255,255,255,0.9),
-                0 -10px 15px -1px rgba(255,255,255,0.6),
+                0 -5px 10px -1px rgba(255,255,255,0.6),
                 inset 0 8px 25px 0 rgba(0,0,0,0.4),
                 inset 0 0 10px 1px rgba(255,255,255,0.6);
   }
 
-  .toggle input:active ~ .label {
-    font-size: 40px;
+  .submit-toggle input:active ~ .submit-label {
+    /* Tıklanınca font çok hafif küçülür */
+    font-size: 15px; 
     color: rgba(0,0,0,0.45);
   }
-
-  .toggle input:checked ~ .button {
-    box-shadow: 0 15px 25px -4px rgba(0,0,0,0.4),
+  
+  /* --- BASILI KALMA DURUMU (CHECKED) --- */
+  .submit-toggle input:checked ~ .submit-button-core {
+    box-shadow: 0 5px 10px -2px rgba(0,0,0,0.4),
                 inset 0 -8px 25px -1px rgba(255,255,255,0.9),
-                0 -10px 15px -1px rgba(255,255,255,0.6),
+                0 -5px 10px -1px rgba(255,255,255,0.6),
                 inset 0 8px 20px 0 rgba(0,0,0,0.2),
                 inset 0 0 5px 1px rgba(255,255,255,0.6);
   }
 
-  .toggle input:checked ~ .label {
-    font-size: 40px;
+  .submit-toggle input:checked ~ .submit-label {
+    font-size: 15px; 
     color: rgba(0,0,0,0.4);
   }
 </style>
 </head>
 <body>
-  <div class="toggle">
+
+  <div class="submit-toggle">
     <input type="checkbox">
-    <div class="button"></div>
-    <div class="label">Metin</div>
+    <div class="submit-button-core"></div>
+    <div class="submit-label">GİRİŞ YAP</div>
   </div>
+
 </body>
 </html>
